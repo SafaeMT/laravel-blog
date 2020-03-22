@@ -11,10 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route:: get ( '/' , 'HomeController@index' );
-Route:: get ( '/Articles' , 'ArticlesController@index' );
-Route:: get ( '/Contact' , 'ContactController@index' );
+Route::get('/', 'HomeController@index');
+Route::get('/Articles', 'PostsController@index');
+Route::get('/Contact', 'ContactController@index');
+Route::get('/Articles/{post_name}', 'PostsController@show');
