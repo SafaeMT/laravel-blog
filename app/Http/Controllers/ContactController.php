@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactRequest;
 use App\Contact;
 
 class ContactController extends Controller
@@ -12,14 +12,8 @@ class ContactController extends Controller
         return view('contact');
     }
 
-    function store(Request $request)
+    function store(ContactRequest $request)
     {
-        $validateData = $request->validate([
-            'name' => ['bail', 'alpha_dash', 'min:3', 'max:255'],
-            'mail' => ['required', 'email', 'max:255'],
-            'message' => ['min:100']
-        ]);
-
         $contact = new Contact;
         $contact->contact_name = $request->name;
         $contact->contact_email = $request->mail;
