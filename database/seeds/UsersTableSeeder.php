@@ -14,10 +14,8 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => Str::random(8),
-            'email' => Str::random(12) . '@gmail.com',
-            'password' => Hash::make('password')
-        ]);
+        factory(App\User::class, 10)->create()->each(function ($user) {
+            $user->posts()->save(factory(App\Post::class)->create());
+        });
     }
 }
