@@ -8,8 +8,6 @@ use Illuminate\Support\Str;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        // TODO: get user_id from user's id instead of random
-        'user_id' => $faker->unique()->randomNumber,
         'post_date' => $faker->dateTime,
         'post_content' => $faker->text,
         'post_title' => $faker->text(rand(15, 85)),

@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         // Get first post with post_name == $post_name and its author's name
         $post = Post::where('post_name', $post_name)->first();
-        $author_name = User::where('id', $post->user_id)->first()->name;
+        $author_name = $post->author->name;
         
         // Pass the post and the name of its author to the view
         return view('posts/single', array(
