@@ -13,10 +13,15 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        // TODO: add foreign key constraint to user_id
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                // To ensure referential integrity
+                ->onDelete('restrict')
+                ->onUpdate('cascade');
             $table->timestamp('post_date');
             $table->text('post_content');
             $table->text('post_title');
