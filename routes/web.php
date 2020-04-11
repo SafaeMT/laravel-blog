@@ -13,6 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/articles', 'PostsController@index');
-Route::get('/contact', 'ContactController@index');
 Route::get('/articles/{post_name}', 'PostsController@show');
+Route::get('/contact', 'ContactController@index');
 Route::post('/contact', 'ContactController@store');
+// No need for 'show', we'll use get:/articles/{post_name} to show the article
+Route::resource('admin/articles', 'ArticlesController')->except(['show']);
