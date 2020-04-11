@@ -14,7 +14,10 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        //
+        $posts = Post::all()->sort(function ($a, $b) {
+            return ($a->post_date > $b->post_date) ? -1 : 1;
+        });
+        return view('admin/articles', ['posts' => $posts]);
     }
 
     /**
