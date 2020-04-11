@@ -15,8 +15,8 @@
             <ul class="menu">
                 <li class="menu-text">Blog</li>
                 <li><a href="/">Home</a></li>
-                <li><a href="/Articles">Articles</a></li>
-                <li><a href="/Contact">Contact</a></li>
+                <li><a href="/articles">Articles</a></li>
+                <li><a href="/contact">Contact</a></li>
             </ul>
         </div>
     </div>

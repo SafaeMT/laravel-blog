@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/Articles', 'PostsController@index');
-Route::get('/Contact', 'ContactController@index');
-Route::get('/Articles/{post_name}', 'PostsController@show');
-Route::post('/Contact', 'ContactController@store');
+Route::get('/articles', 'PostsController@index');
+Route::get('/contact', 'ContactController@index');
+Route::get('/articles/{post_name}', 'PostsController@show');
+Route::post('/contact', 'ContactController@store');
