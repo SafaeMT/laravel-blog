@@ -27,7 +27,13 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        //
+        $categories = [
+            'culture' => 'Culture',
+            'sport' => 'Sport',
+            'news' => 'Faits divers',
+            'politics' => 'Politique'
+        ];
+        return view('admin/create-article', ['categories' => $categories]);
     }
 
     /**
