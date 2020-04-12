@@ -19,19 +19,7 @@ Route::post('/Contact', 'ContactController@store');
 
 //---------
 
-Route::prefix('/comments')->group(function() {
-    Route::post('','CommentsController@create')->name(''); //-- a définir
+Route::prefix('comments')->group(function() {
+    Route::post('','CommentsController@store')->name('un_commentaire'); //-- a définir
 });
 
-// Route::post('comment', array('before' => 'csrf', function() 
-// {
-//     Comment::create(
-//         array(
-            
-//             'user_id' => Auth::user()->user_id,
-//             'post_id' => Input::get('pseudo'),
-//             'comment_content' => Input::get('comment_content')
-//         )
-//     );
-//     return Redirect::to('Artices'.Input::get('Articles').'/'.Input::get('post_id'));
-// }));

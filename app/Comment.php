@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'user_id', 'post_id', 'comment_content',
+        'user_id', 'post_id', 'body',
     ];
      //
     public function article()
@@ -19,4 +19,6 @@ class Comment extends Model
     {
         return $this->belongsTo('User');
     }
+
+
 }

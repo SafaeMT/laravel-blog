@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CommentRequest;
+use App\Comment;
+use App\User;
+use App\Post;
 
 class CommentsController extends Controller
 {
@@ -14,39 +19,34 @@ class CommentsController extends Controller
     }
 
 
-    public function create (CommentRequest $request)
+
+    public function store(CommentRequest $request, Post $post) //methode chargée de gérer la soumission du commentaire
     {
-        $body = request['']//message
+        $validator = $request->validate([ //validation de la requete
+               
+        'user_name' => ['required', 'user_name', 'max:200'],
+        'comment_content'=> ['required', 'body', 'max:6500']
+        ]);
 
-    }
-
-
-    public function store(Request $request)
-    {
-        $this->gestioncomment->store($request->all(), $request->user()->user_id);
- 
+     
+        $comment = new $this->model; 
+        $body= $request ['body'];
+        $comment->body = $body;
+        $comment->post_id = $request['post_id'];//comment recuperer le post_id
+        $comment->user_id = $request['user_id'];
+        $user = User::where('user_id',$comment->user_id)->first();
+        
+        $comment->save();
         return redirect()->back();
-    //}
- //----creer un front .blog
-    //return redirect()->back()->with('warning', trans('front/blog.warning'));
+        
+        if ($validator->fails()) {
+            return back()->withInput()->withErrors($validator->errors());
+            }
+        
     }
 
-// /**
-//  * Store a comment.
-//  *
-//  * @param  array $inputs
-//  * @param  int   $user_id
-//  * @return void
-//  */
-// public function store($inputs, $user_id)
-// {
-//     $comment = new $this->model; 
- 
-//     $comment->content = $inputs['comments'];
-//     $comment->post_id = $inputs['post_id'];
-//     $comment->user_id = $user_id;
- 
-//     $comment->save();
-// }
+    
+
+
     
 }

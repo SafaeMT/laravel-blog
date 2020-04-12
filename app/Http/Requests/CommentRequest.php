@@ -13,7 +13,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;//au lieu de false
     }
 
     /**
@@ -21,12 +21,16 @@ class CommentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules() //regle de validation de la requete
     {
         $comment_id = $this->comment;
         return [
             //
-            'comments' . $comment_id => 'required','max:65000',
+                   'user_name'=>'required|max:20',
+                   'texte'=>'require|max:6500'
         ];
     }
+
+
+
 }
