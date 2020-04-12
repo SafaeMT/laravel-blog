@@ -10,7 +10,9 @@ class PostsController extends Controller
 {
     function index()
     {
-        return view('articles');
+        //return view('articles');
+        $posts = \App\Post::all();
+        return view('articles', compact('posts'));
     }
 
     public function show($post_name)
