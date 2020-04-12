@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Http\Requests\ArticleAddRequest;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -39,12 +40,22 @@ class ArticlesController extends Controller
     /**
      * Store a newly created article in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ArticleAddRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleAddRequest $request)
     {
-        //
+        $article = new Post;
+        // TODO: replace by user.id when authentication is implemented
+        $article->user_id = 1;
+        $article->post_title = $request->title;
+        $article->post_category = $request->category;
+        $article->post_content = $request->content;
+        // To have URLs in the format "url-to-visit"
+        $article->post_name = str_replace(' ', '-', strtolower($article->post_title));
+        $article->save();
+
+        return redirect('articles/' . $article->post_name);
     }
 
     /**
