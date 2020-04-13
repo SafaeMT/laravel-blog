@@ -17,14 +17,15 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/Articles">Articles</a></li>
                 <li><a href="/Contact">Contact</a></li>
+                {{-- <li><a href="/Login">Login</a></li> --}}
             </ul>
         </div>
     </div>
 
     <div class="callout large primary">
         <div class="row column text-center">
-            <h1>Our Blog</h1>
-            <h2 class="subheader">Such a Simple Blog Layout</h2>
+            <h1>Safae TOUATI et Ilhame SEYAH ROUANE</h1>
+            <h2 class="subheader">Bienvenue sur le Blog</h2>
         </div>
     </div>
 

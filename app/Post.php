@@ -18,7 +18,7 @@ class Post extends Model
     }
     public function comments()
     {
-        //Post::with('posts.comments')->get();//le modele charge les commentaires du post
+        
         return $this->hasMany(Comment::class);
     }
 

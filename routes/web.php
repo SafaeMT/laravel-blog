@@ -19,14 +19,14 @@ Route::get('/Contact', 'ContactController@index');
 Route::post('/Contact', 'ContactController@store');
 
 //---------Commentaires
-//Route::resource('posts.comments.store', 'CommentsController');
+
 Route::prefix('/Articles')->group(function() {
     Route::get('/', 'PostsController@index');
     Route::get('/{post_name}', 'PostsController@show')->name('article');
-    Route::post('/comment','CommentsController@store')->name('comment'); //pb de definition de la route
+    Route::post('/comment','CommentsController@store')->name('comment'); 
 });
 
-//---- Athentificatioon
+//---- Athentification
 Route::auth();
 
 Route::get('/Register', 'RegisterController@create');

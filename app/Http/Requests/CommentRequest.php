@@ -14,7 +14,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;//au lieu de false
+        return true;//au lieu de false car l'authentification n'est pas gérée
 
         // $comment = Comment::find($this->route('comment'));
 

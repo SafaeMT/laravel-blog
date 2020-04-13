@@ -18,8 +18,8 @@
     <form action="{{ route('comment') }}" method="post">
          @csrf
         <textarea style=" height:2em; width:50%"rows="1" name="user_name" placeholder="Votre pseudo">{{ old('user_name') }}</textarea>
-            <textarea style=" height:2em; width:50%"rows="1" name="email" placeholder="Votre email" ></textarea>
-                <textarea  style=" height:2em; width:50%" rows="5" name="body" placeholder="Laisser un commentaire" ></textarea>
+            <textarea style=" height:2em; width:50%"rows="1" name="email" placeholder="Votre email" >{{ old('email') }}</textarea>
+                <textarea  style=" height:2em; width:50%" rows="5" name="body" placeholder="Laisser un commentaire" >{{ old('body') }}</textarea>
                     <input type="hidden" name="post_id" value={{ $post->id }} />
                         <button class="hollow button" type="submit"> Envoyer commentaire</button>
                     </form>
