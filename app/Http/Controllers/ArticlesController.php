@@ -86,11 +86,12 @@ class ArticlesController extends Controller
     /**
      * Remove the specified article from storage.
      *
-     * @param  \App\Post  $post
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect('admin/articles');
     }
 }
