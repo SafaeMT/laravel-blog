@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\Http\Requests\ArticleAddRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -34,10 +33,10 @@ class ArticlesController extends Controller
     /**
      * Store a newly created article in storage.
      *
-     * @param  \Illuminate\Http\ArticleAddRequest  $request
+     * @param  \Illuminate\Http\ArticleRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ArticleAddRequest $request)
+    public function store(ArticleRequest $request)
     {
         $article = new Post;
         // TODO: replace by user.id when authentication is implemented
@@ -55,7 +54,7 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified article.
      *
-     * @param  \App\Post  $post
+     * @param  string  $post_name
      * @return \Illuminate\Http\Response
      */
     public function edit($post_name)
@@ -67,13 +66,21 @@ class ArticlesController extends Controller
     /**
      * Update the specified article in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
+     * @param  \Illuminate\Http\ArticleRequest  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(ArticleRequest $request, $id)
     {
-        //
+        $post_name = str_replace(' ', '-', strtolower($request->title));
+        Post::where('id', $id)->update([
+            'post_title' => $request->title,
+            'post_category' => $request->category,
+            'post_content' => $request->content,
+            'post_name' => $post_name
+        ]);
+
+        return redirect('articles/' . $post_name);
     }
 
     /**
