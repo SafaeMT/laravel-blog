@@ -5,17 +5,37 @@
     <h4> Author : {{ $author_name }} </h4>
     <p> {{ $post->post_content }} </p>
     <br>
-    <h6 style="color: grey">Commentaires :</h6>
 
-            <div style="margin-button:50px;" id="comments">
-                <form action="{{route('un_commentaire')}}" method="post">
-                    @csrf
-                <textarea rows="1" name="user_id" placeholder="Votre pseudo" ></textarea>
-                <textarea  rows="3" name="body" placeholder="Laisser un commentaire" > </textarea>
-                <button  style="color: grey; margin-top:10px; border: 2px solid; border-radius: 10px; padding:3px" type="submit"> Envoyer commentaire</button>
-                </form>
+    <div>
+    <h6 style="color: grey; ">Saisissez votre commentaire :</h6>
+    @foreach($errors->all() as $error)
+        <ul>
+            <li style="color:red;">{{ $error }}</li>
+        </ul>
+    @endforeach
+
+    <div style="margin-button:50px;" id="comments">
+    <form action="{{ route('comment') }}" method="post">
+         @csrf
+        <textarea style=" height:2em; width:50%"rows="1" name="user_name" placeholder="Votre pseudo">{{ old('user_name') }}</textarea>
+            <textarea style=" height:2em; width:50%"rows="1" name="email" placeholder="Votre email" ></textarea>
+                <textarea  style=" height:2em; width:50%" rows="5" name="body" placeholder="Laisser un commentaire" ></textarea>
+                    <input type="hidden" name="post_id" value={{ $post->id }} />
+                        <button class="hollow button" type="submit"> Envoyer commentaire</button>
+                    </form>
                 <br><br>
-                </div>              
+            </div>              
+          </div>
 
-            <br>
+     <h6 style="color: black">Lire les commentaires :</h6>
+        <div style=" background-color:lightgrey";>
+            @foreach($post->comments as $comment)
+                <sub style = "color:darkslategray ; text-decoration: underline; "><i>   publié par <strong> {{$comment->user_name}} </strong> : </i></sub><br>
+                    <table class = "card-section" style="color: darkblue;" >{{$comment->body}}
+                </table>  
+             @endforeach
+                <br>
+        </div>
+
+
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Comment;
 
 class CommentRequest extends FormRequest
 {
@@ -14,6 +15,10 @@ class CommentRequest extends FormRequest
     public function authorize()
     {
         return true;//au lieu de false
+
+        // $comment = Comment::find($this->route('comment'));
+
+        // return $comment && $this->user()->can('update', $comment);
     }
 
     /**
@@ -23,11 +28,10 @@ class CommentRequest extends FormRequest
      */
     public function rules() //regle de validation de la requete
     {
-        $comment_id = $this->comment;
         return [
-            //
-                   'user_name'=>'required|max:20',
-                   'texte'=>'require|max:6500'
+            'user_name' => 'required|max:255',
+            'email' => 'required|max:255',
+            'body' => 'required|max:6500'
         ];
     }
 
