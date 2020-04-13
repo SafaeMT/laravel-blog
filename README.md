@@ -1,78 +1,55 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Projet Laravel-Blog
+## Auteures : Safae TOUATI et Ilhame SEYAH ROUANE
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Prérequis :
 
-## About Laravel
+-   Composer
+-   Laravel Framework 6.14.0
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installation:
+1.  Clone le projet à partir de GitHub
+2. Installer Composer et Laravel
+3. ...
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Etat du Projet :
+Le TP2 a été finalisé et 3 fonctionalités développée.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Fonctionalités rendues TP2:
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Fonctionalités finalisées :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Le TP2
+- création de modèles et utilisation d'Eloquent, creation de controleurs, de vue et de routes, cration de  création de tables sur phpLiteAdmin
+- Base de données : création de tables et gestion de la base de données via phpLiteAdmin (mot de passe : admin)
+- Page d'accueil : affichage des 3 derniers articles sous forme de liste
+- Les titres des articles sont rendus cliquables et renvoie vers la pages single article 
+    et l'url affichée est l'url /Articles  /nom_de_l'article
+    Affiche le tite de l'article, son auteur et le contenenu de l'article
+- Page Articles : création d'une liste détaillée des articles :
+    Affichage de titre, de la catégorie et du contenu des articles.
+    Chaque titre est cliquable et renvoie vers la page Single.blade.php qui permet d'afficher l'intégralité de l'article 
+    et l'url /Articles/nom_de_l'article
+ - La page contact : création d'un formulaire de contact qui permet l'envoie d'un commentaire vers la base de données.
+    Les erreurs de champs vide et contraintes de saisies sont gérées et des messages sont affichés.
+ - la page de confirmation d'envoie du message est affiché à l'issue de l'envoie
+ 
+### CRUD
+...
 
-## Laravel Sponsors
+### Identification avec Socialite
+...
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Gestion des commentaires - basique**
+-   Réalisation d'un formulaire sous les articles
+-   Possibilité de soumettre le commentaire via le bouton "Envoyer commentaire"
+-   Les commentaires sont enregistré dans la base de donnée
+-   Les commentaires sont affichés dans une liste de commentaires en dessous des articles
+___________________________________________________________________________________________________________________________
+### Tentatives de fonctionalités non-finalisées:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+**Gestion des commentaires avec Ajax :***
+-   Tentative de réalisation de la gestion des commentaires via Ajax mais la nécessité d'être complètement à l'aise avec Vue.js et npm ne nous ont pas permis de finaliser la fonctionnalité dans le temps imparti - Avorté
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Gestion de l'authentification avec Laravel Voyager:**
+-   après l'installation de Laravel Voyager et la réalisation du code permettant d'accéder à la page login administration a été réalisé mais le projet à complètement crashé et impossible de s'authentifier en temps qu'administrateur via admin@admin.com et password. - Avorté
