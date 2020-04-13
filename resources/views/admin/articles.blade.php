@@ -2,13 +2,14 @@
 
 @section ( 'content' )
     <h3> Articles </h3>
-    <a href="articles/create"> Créer un nouvel article </a>
+    <a href="{{ route('articles.create') }}"> Créer un nouvel article </a>
     <ul>
     @foreach ($posts as $post)
         <li>
-            <a href="../articles/{{ $post->post_name }}"> {{ $post->post_title }} </a>
-            <a href="articles/{{ $post->post_name }}/edit"> Modifier </a>
-            <form action="articles/{{ $post->post_name }}" method="POST">
+            <a href="{{ route('articles.show', $post->post_name) }}"> {{ $post->post_title }} </a>
+            <a href="{{ route('articles.edit', $post->post_name) }}"> Modifier </a>
+            <form action="{{ route('articles.destroy', $post) }}" method="POST">
+                @csrf
                 @method('DELETE')
                 <button> Supprimer </button>
             </form>
