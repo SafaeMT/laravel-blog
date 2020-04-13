@@ -28,13 +28,7 @@ class ArticlesController extends Controller
      */
     public function create()
     {
-        $categories = [
-            'culture' => 'Culture',
-            'sport' => 'Sport',
-            'news' => 'Faits divers',
-            'politics' => 'Politique'
-        ];
-        return view('admin/create-article', ['categories' => $categories]);
+        return view('admin/article-form', ['categories' => Post::CATEGORIES]);
     }
 
     /**
@@ -64,9 +58,10 @@ class ArticlesController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit($post_name)
     {
-        //
+        $post = Post::where('post_name', $post_name)->first();
+        return view('admin/article-form', ['post' => $post, 'categories' => Post::CATEGORIES]);
     }
 
     /**
