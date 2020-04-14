@@ -7,7 +7,23 @@ use App\Post;
 
 class HomeController extends Controller
 {
-    function index()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    
+    public function index()
     {
         // gets the 3 newest posts
         $posts = (Post::all())->sort(function ($a, $b) {

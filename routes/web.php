@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
@@ -20,7 +21,7 @@ Route::get('/contact', 'ContactController@index');
 Route::post('/contact', 'ContactController@store');
 
 // No need for 'show', we'll use get:/articles/{post_name} to show the article
-Route::resource('admin/articles', 'ArticlesController')->except(['show']);
+Route::resource('admin/articles', 'ArticlesController')->except(['show'])->middleware('auth');
 
 Route::get('login/github', 'Auth\LoginController@redirectToProvider');
 Route::get('login/github/callback', 'Auth\LoginController@handleProviderCallback');
