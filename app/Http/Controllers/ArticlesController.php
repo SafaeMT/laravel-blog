@@ -4,9 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Http\Requests\ArticleRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // User must be authentified to visit the routes for this controller 
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the articles sorted by newest.
      *
@@ -39,8 +51,7 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
         $article = new Post;
-        // TODO: replace by user.id when authentication is implemented
-        $article->user_id = 1;
+        $article->user_id = Auth::id();
         $article->post_title = $request->title;
         $article->post_category = $request->category;
         $article->post_content = $request->content;

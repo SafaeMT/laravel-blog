@@ -1,4 +1,4 @@
-@extends ('layouts/main')
+@extends ('layouts.app')
 
 @section ( 'content' )
     <h3> Articles </h3>
