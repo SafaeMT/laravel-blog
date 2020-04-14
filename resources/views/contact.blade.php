@@ -3,7 +3,7 @@
 @section ( 'content' )
     <!-- Contact form -->
     <h3> Formulaire de contact </h3>
-    <form method="POST" action="./Contact">
+    <form method="POST" action="./contact">
         @csrf <!-- Required for security reasons -->
         <fieldset>
             <legend> Contactez-nous via ce formulaire </legend>
