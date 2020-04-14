@@ -8,6 +8,17 @@ use App\Http\Requests\ArticleRequest;
 class ArticlesController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        // User must be authentified to visit the routes for this controller 
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the articles sorted by newest.
      *
      * @return \Illuminate\Http\Response

@@ -7,7 +7,12 @@ use App\Post;
 
 class HomeController extends Controller
 {
-    function index()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
         // gets the 3 newest posts
         $posts = (Post::all())->sort(function ($a, $b) {
