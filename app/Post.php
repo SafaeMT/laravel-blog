@@ -8,7 +8,17 @@ use App\Categorie;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
-{
+{   
+    /**
+     * List of posts' categories.
+     */
+    const CATEGORIES = [
+        'culture' => 'Culture',
+        'sport' => 'Sport',
+        'news' => 'Faits divers',
+        'politics' => 'Politique'
+    ];
+
     /**
      * Get the user that authored the post.
      */

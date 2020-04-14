@@ -10,27 +10,20 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
 use App\Http\Controllers\CommentsController;
 
-
 Route::get('/', 'HomeController@index');
-Route::get('/Contact', 'ContactController@index');
-Route::post('/Contact', 'ContactController@store');
 
-//---------Commentaires
-
-Route::prefix('/Articles')->group(function() {
-    Route::get('/', 'PostsController@index');
-    Route::get('/{post_name}', 'PostsController@show')->name('article');
+//--------- Comments
+Route::prefix('/articles')->group(function() {
     Route::post('/comment','CommentsController@store')->name('comment'); 
 });
 
-//---- Athentification
-Route::auth();
-
-Route::get('/Register', 'RegisterController@create');
-Route::get('/Login', 'LoginrController@login');
-Route::get('/Logout', 'LoginrController@logout');
-
-
+Route::get('/articles', 'PostsController@index');
+Route::get('/articles/{post_name}', 'PostsController@show')->name('articles.show');
+Route::get('/contact', 'ContactController@index');
+Route::post('/contact', 'ContactController@store');
+// No need for 'show', we'll use get:/articles/{post_name} to show the article
+Route::resource('admin/articles', 'ArticlesController')->except(['show']);
