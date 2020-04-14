@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Blog Laravel</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Blog
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,7 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/articles') }}">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('articles.index') }}">Admin</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -71,6 +82,13 @@
                 </div>
             </div>
         </nav>
+
+        <header class="jumbotron jumbotron-fluid bg-dark">
+            <div class="container text-center">
+                <h1 class="display-4 text-white">Notre blog</h1>
+                <h2 class="text-white">Safae MLIHA TOUATI & Ilhame ROUANE</h2>
+            </div>
+        </header>
 
         <main class="py-4">
             @yield('content')
