@@ -24,8 +24,8 @@
 
     <div class="callout large primary">
         <div class="row column text-center">
-            <h1>Our Blog</h1>
-            <h2 class="subheader">Such a Simple Blog Layout</h2>
+            <h1>Safae TOUATI et Ilhame SEYAH ROUANE</h1>
+            <h2 class="subheader">Bienvenue sur le Blog</h2>
         </div>
     </div>
 

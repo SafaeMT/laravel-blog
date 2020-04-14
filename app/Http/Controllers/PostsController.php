@@ -30,7 +30,7 @@ class PostsController extends Controller
     public function show($post_name)
     {
         // Get first post with post_name == $post_name and its author's name
-        $post = Post::where('post_name', $post_name)->first();
+        $post = Post::where('post_name', $post_name)->firstOrFail();
         $author_name = $post->author->name;
         
         // Pass the post and the name of its author to the view

@@ -1,12 +1,13 @@
 <?php
 
 namespace App;
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+namespace App;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+
+class Admin extends Authenticatable
 {
     use Notifiable;
 
@@ -16,8 +17,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
-    ];
+        'name', 'email', 'password'];
+    
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,7 +39,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the user posts'
+     * Get the admin posts'
      */
     public function posts()
     {

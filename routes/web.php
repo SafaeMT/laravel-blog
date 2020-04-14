@@ -12,7 +12,15 @@
 */
 Auth::routes();
 
+use App\Http\Controllers\CommentsController;
+
 Route::get('/', 'HomeController@index');
+
+//--------- Comments
+Route::prefix('/articles')->group(function() {
+    Route::post('/comment','CommentsController@store')->name('comment'); 
+});
+
 Route::get('/articles', 'PostsController@index');
 Route::get('/articles/{post_name}', 'PostsController@show')->name('articles.show');
 Route::get('/contact', 'ContactController@index');
