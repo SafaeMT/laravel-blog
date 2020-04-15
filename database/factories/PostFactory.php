@@ -14,6 +14,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'post_status' => $faker->text(20),
         'post_name' => $faker->text(rand(10, 200)),
         'post_type' => $faker->text(20),
-        'post_category' => ['Culture', 'Sport', 'Faits divers'][rand(0, 2)],
+        'post_category' => [ 'culture', 'sport', 'news', 'politics'][rand(0, 3)],
     ];
 });
