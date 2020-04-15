@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,9 +13,20 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 10)->create()->each(function ($user) {
-            // Create a post with user_id = user's id
-            $user->posts()->save(factory(App\Post::class)->make(['user_id' => $user->id]));
-        });
+        // Testing users
+        DB::table('users')->insert([
+            'name' => 'First User',
+            'email' => 'first.user@gmail.com',
+            'password' => Hash::make('password1')
+        ]);
+
+        $id = DB::table('users')->insertGetId([
+            'name' => 'Second User',
+            'email' => 'second.user@gmail.com',
+            'password' => Hash::make('password2')
+        ]);
+
+        // Create 5 posts with user_id = second user's id
+        factory(App\Post::class, 5)->create(['user_id' => $id]);
     }
 }
