@@ -31,7 +31,7 @@ class CommentsController extends Controller
 
 
 
-        return redirect()->route('article', ['post_name' => $comment->post->post_name]);
+        return redirect()->route('articles.show', ['post_name' => $comment->post->post_name]);
 
 
     }   
