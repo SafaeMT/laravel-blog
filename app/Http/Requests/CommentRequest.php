@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Comment;
 
 class CommentRequest extends FormRequest
@@ -28,11 +29,14 @@ class CommentRequest extends FormRequest
      */
     public function rules() //regle de validation de la requete
     {
-        return [
-            'user_name' => 'required|max:255',
-            'email' => 'required|max:255',
-            'body' => 'required|max:6500'
-        ];
+        $rules = ['body' => 'required|max:6500'];
+        
+        if (!Auth::check()) {
+            $rules['user_name'] = 'required|max:255';
+            $rules['email'] = 'required|max:255';
+        }
+
+        return $rules;
     }
 
 

@@ -12,33 +12,35 @@
                     <form method="POST" action="./contact">
                         @csrf <!-- Required for security reasons -->
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Nom:') }}</label>
+                        @guest
+                            <div class="form-group row">
+                                <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Nom:') }}</label>
 
-                            <div class="col-md-9">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" />
+                                <div class="col-md-9">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" />
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Email:') }}</label>
+                            <div class="form-group row">
+                                <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Email:') }}</label>
 
-                            <div class="col-md-9">
-                                <input id="email" type="email" class="form-control @error('mail') is-invalid @enderror" name="mail" value="{{ old('mail') }}" />
+                                <div class="col-md-9">
+                                    <input id="email" type="email" class="form-control @error('mail') is-invalid @enderror" name="mail" value="{{ old('mail') }}" />
 
-                                @error('mail')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('mail')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
+                        @endguest
 
                         <div class="form-group row">
                             <label for="message" class="col-md-2 col-form-label text-md-right">{{ __('Message:') }}</label>
