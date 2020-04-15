@@ -1,55 +1,93 @@
-# Projet Laravel-Blog
-## Auteures : Safae TOUATI et Ilhame SEYAH ROUANE
+![Logo of the project](https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg)
+# Laravel Blog &middot; [![Build Status](https://img.shields.io/travis/npm/npm/latest.svg?style=flat-square)](https://travis-ci.org/npm/npm) [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/npm) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/your/your-project/blob/master/LICENSE)
 
-## Prérequis :
-
--   Composer
--   Laravel Framework 6.14.0
-
-## Installation:
-1.  Clone le projet à partir de GitHub
-2. Installer Composer et Laravel
-3. ...
-
-## Etat du Projet :
-Le TP2 a été finalisé et 3 fonctionalités développée.
-
-### Fonctionalités rendues TP2:
+Blog basique qui utilise Laravel comme Framework, relatif au projet de l'UE "Programmation Web Côté Serveur".
 
 
-## Fonctionalités finalisées :
+- [Developing](#developing)
+  - [Built With](#built-with)
+  - [Prerequisites](#prerequisites)
+  - [Setting up Dev](#setting-up-dev)
+  - [Building](#building)
+- [Configuration](#configuration)
+- [Features and testing steps](#features-and-testing-steps)
+  - [1- Gestion des commentaires:](#1--gestion-des-commentaires)
+  - [3- Identification / Authentification qui protège l'accès à l’administration](#3--identification--authentification-qui-prot%c3%a8ge-lacc%c3%a8s-%c3%a0-ladministration)
+  - [2- CRUD des articles](#2--crud-des-articles)
 
-### Le TP2
-- création de modèles et utilisation d'Eloquent, creation de controleurs, de vue et de routes, cration de  création de tables sur phpLiteAdmin
-- Base de données : création de tables et gestion de la base de données via phpLiteAdmin (mot de passe : admin)
-- Page d'accueil : affichage des 3 derniers articles sous forme de liste
-- Les titres des articles sont rendus cliquables et renvoie vers la pages single article 
-    et l'url affichée est l'url /Articles  /nom_de_l'article
-    Affiche le tite de l'article, son auteur et le contenenu de l'article
-- Page Articles : création d'une liste détaillée des articles :
-    Affichage de titre, de la catégorie et du contenu des articles.
-    Chaque titre est cliquable et renvoie vers la page Single.blade.php qui permet d'afficher l'intégralité de l'article 
-    et l'url /Articles/nom_de_l'article
- - La page contact : création d'un formulaire de contact qui permet l'envoie d'un commentaire vers la base de données.
-    Les erreurs de champs vide et contraintes de saisies sont gérées et des messages sont affichés.
- - la page de confirmation d'envoie du message est affiché à l'issue de l'envoie
- 
-### CRUD
-...
+## Developing
 
-### Identification avec Socialite
-...
+### Built With
+- [Laravel 6.x](https://laravel.com/docs/6.x/).
+- [Laravel UI 1.x](https://github.com/laravel/ui/tree/1.x).
+- [Bootstrap 4.x](https://getbootstrap.com/).
 
-### Gestion des commentaires - basique**
--   Réalisation d'un formulaire sous les articles
--   Possibilité de soumettre le commentaire via le bouton "Envoyer commentaire"
--   Les commentaires sont enregistré dans la base de donnée
--   Les commentaires sont affichés dans une liste de commentaires en dessous des articles
-___________________________________________________________________________________________________________________________
-### Tentatives de fonctionalités non-finalisées:
+### Prerequisites
+  Installer [Composer](https://getcomposer.org/) et [npm](https://nodejs.org/).
 
-**Gestion des commentaires avec Ajax :***
--   Tentative de réalisation de la gestion des commentaires via Ajax mais la nécessité d'être complètement à l'aise avec Vue.js et npm ne nous ont pas permis de finaliser la fonctionnalité dans le temps imparti - Avorté
+### Setting up Dev
 
-**Gestion de l'authentification avec Laravel Voyager:**
--   après l'installation de Laravel Voyager et la réalisation du code permettant d'accéder à la page login administration a été réalisé mais le projet à complètement crashé et impossible de s'authentifier en temps qu'administrateur via admin@admin.com et password. - Avorté
+Commencer par cloner le dépot, changer la branche vers master et installer les dépendances:
+```shell
+git clone https://github.com/SafaeMT/laravel-blog.git
+cd laravel-blog/
+git checkout master
+composer install
+npm install
+```
+
+Ensuite, renommer `.env.example` à `.env`, puis modifier ce dernier pour changer la configuration de la base de données comme suit:
+
+```
+DB_CONNECTION=sqlite
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+DB_DATABASE= <absolute-path-to-the-project>laravel-blog\database\database.sqlite
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+S'assurer de remplacer `<absolute-path-to-the-project>` par le chemin absolu actuel.
+
+Enfin, faire une migration de la base de données, compiler les assets du frontend, puis lancer le serveur après avoir généré la clé de l'application:
+
+```shell
+touch database/database.sqlite
+php artisan migrate:fresh --seed
+npm run dev
+php artisan key:generate
+php artisan serve
+```
+
+L'application est maintenant accessible depuis `http://localhost:8000` et comme bonus, phpliteadmin est intégré en visitant `http://localhost:8000/phpliteadmin.php`. Le password est `admin`.
+
+### Building
+
+Si des assets changent, relancer `npm run dev`. Vous pouvez utiliser `npm run watch` pour permettre à npm de mettre à jour les fichiers compilés automatiquement.
+
+Par ailleurs, s'il y a eu des modifications au niveau des migrations, faire `php artisan migrate:fresh --seed`.
+
+## Configuration
+
+Vous pouvez changer le lien vers la base de données ainsi que son type en changeant les lignes concernées dans le fichier `.env`.
+
+## Features and testing steps
+> Tous les formulaires intègrent la validation des champs.
+
+### 1- Gestion des commentaires:
+1. Visiter un article disponible via les pages *Home* ou *Articles*.
+
+2. Remplir et soumettre le formulaire au-dessous pour ajouter un commentaire.
+   
+### 3- Identification / Authentification qui protège l'accès à l’administration
+> 2 utilisateurs fournis: `first.user@gmail.com / password1` et `second.user@gmail.com / password2`. Le deuxième user a des posts générés.
+1. S'enregister ou se connecter via l'un des comptes existants.
+
+2. La partie administration est maintenant accessible via la page *Admin*. L'utilisateur connecté n'a plus besoin de fournir ses informations (nom et email) pour soumettre un commentaire ou un message de contact.
+
+### 2- CRUD des articles
+1. Se connecter.
+2. Visiter la page *Admin* qui n'affiche que les articles de l'utilisateur connecté.
+3. Tester le CRUD des articles.
+   - Cliquer sur le bouton "Créer un article", puis remplir et soumettre le formulaire pour créer un nouvel article.
+   - Cliquer sur le bouton "Modifier", puis changer les champs souhaités et soumettre le formulaire pour modifier l'article en question.
+   - Cliquer sur le bouton "Supprimer" pour supprimer l'article.
