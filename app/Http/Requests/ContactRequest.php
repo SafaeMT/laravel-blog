@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+
 
 class ContactRequest extends FormRequest
 {
@@ -23,10 +25,15 @@ class ContactRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => ['bail', 'string', 'min:3', 'max:255'],
-            'mail' => ['required', 'email', 'max:255'],
+        $rules = [
             'message' => ['min:100']
         ];
+
+        if (!Auth::check()) {
+            $rules['name'] = ['bail', 'string', 'min:3', 'max:255']; 
+            $rules['mail'] = ['bail', 'string', 'min:3', 'max:255'];
+        }
+        
+        return $rules;
     }
 }

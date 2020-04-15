@@ -26,7 +26,7 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-        $posts = Post::all()->sort(function ($a, $b) {
+        $posts = Post::where('user_id', Auth::id())->get()->sort(function ($a, $b) {
             return ($a->post_date > $b->post_date) ? -1 : 1;
         });
         return view('admin/articles', ['posts' => $posts]);
@@ -71,6 +71,10 @@ class ArticlesController extends Controller
     public function edit($post_name)
     {
         $post = Post::where('post_name', $post_name)->first();
+        if (!$post->user_id == Auth::id()) {
+            return back();
+        }
+
         return view('admin/article-form', ['post' => $post, 'categories' => Post::CATEGORIES]);
     }
 
